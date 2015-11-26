@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>package_sources. context 0.0.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">context 0.0.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Information about non-CRAN packages</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>package_sources(cran&nbsp;=&nbsp;NULL, repos&nbsp;=&nbsp;NULL, github&nbsp;=&nbsp;NULL, bitbucket&nbsp;=&nbsp;NULL, local&nbsp;=&nbsp;NULL, expire&nbsp;=&nbsp;1)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>cran</dt>
+      <dd>Use this to set the CRAN mirror.  The default will use
+the Rstudio CRAN mirror which is usually nice and fast.</dd>
+      <dt>repos</dt>
+      <dd>Character vector of additional reposotories to use.
+Specify whatever URL would normally work with
+<code><a href='http://www.inside-r.org/r-doc/utils/install.packages'>install.packages</a></code>.  In addition, specify URL of the
+form <code>drat://<username></code> to install from drat repositories.</dd>
+      <dt>github, bitbucket</dt>
+      <dd>Character vector of github or bitbucket
+packages to install.  The format is similar to
+<code>devtools::install_github</code>, being
+<code>username/repo[/subdir][@ref]</code> (note that pull requests are
+not supported in contrast with devtools).</dd>
+      <dt>local</dt>
+      <dd>Character vector of paths to packages on your local
+computer to make available.  These can be directories or built
+<code>tar.gz</code> files.</dd>
+      <dt>expire</dt>
+      <dd>Number of days after which to expire packages in the
+archive.  After this, packages will be fetched again.
+Fractional days or <code><a href='http://www.inside-r.org/r-doc/base/difftime'>difftime</a></code> objects are fine.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Specify information about locations to find non-CRAN packages.
+This will typically be saved with a <code>context</code>.  As
+part of the context generation process, any packages not in a
+repository (CRAN or other CRAN-like repository such as a drat
+reposotory) will be copied into a local drat repository that will
+be available to a process that is restoring the context.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>package_sources</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

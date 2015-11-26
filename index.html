@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Index. context 0.0.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Rich FitzJohn">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">context 0.0.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    <h1>context</h1>
+
+<p><a href="https://travis-ci.org/dide-tools/context"><img src="https://travis-ci.org/dide-tools/context.png?branch=master" alt="Build Status"/></a></p>
+
+<blockquote>
+<p>Contexts for evaluating R expressions</p>
+</blockquote>
+
+<p>This package organises collecting (and recreating) the context of an R expression to replay later.  At this point, the package is hard-coded to use only filesystem storage, but soon I&#39;ll generalise that to allow interfacing with things like <code>rrqueue</code> which follow similar ideas.</p>
+
+<h2>Concepts</h2>
+
+<h3>Task</h3>
+
+<p>A task is an <strong>expression</strong> to be evaluated in a <strong>context</strong>.  When evaluated it will create a <strong>result</strong>.</p>
+
+<h3>Contexts</h3>
+
+<p>These are the ingredients to create an environment (in rrqueue they&#39;re called environments but I think that context is a little ambiguous).  A context does imply an environment, but several environments might go into a context.</p>
+
+<p>These will be saved at <code>&lt;path&gt;/contexts/&lt;id&gt;</code> where <code>&lt;id&gt;</code> is an identifier that we&#39;ll generate to be unique to a context.</p>
+
+<p>A context includes:</p>
+
+<ul>
+<li>a set of packages to install and load</li>
+<li>a set of R files to <code>source</code>, or a global environment to create</li>
+<li>a local environment to create</li>
+</ul>
+
+<p>In addition, the expression may have local variables.</p>
+
+<h3>Environments</h3>
+
+<p>Local and global environments may be saved by the contexts when using <code>auto=TRUE</code>.  These will be saved into <code>&lt;path&gt;/environments/&lt;md5&gt;</code> where <code>&lt;md5&gt;</code> is the md5 sum of the saved file (content addressable).  Note that the global environment is saved as an <em>image</em> while the local environment is serialised as a single object.</p>
+
+<p>This may do slightly weird things with complicated interactions between local and global objects and their environments, in which cases users should not use the automatic context generation.  Things like C/C++ pointers, Rcpp/RcppR6 reference objects will also be badly affected.</p>
+
+<h1>Packages</h1>
+
+<p>Coordinating package installation on remote machines turns out to be a bit horrible, especially when you only want packages installed if they are not already there (hence all the constructs like <code>if (!require(pkg)) install.packages(pkg)...</code> that tend to litter scripts.  This situation is compounded if some packages are to come from non-CRAN repositories (e.g., unstable versions, research code, etc).</p>
+
+<p>To help this, <code>context</code> allows specifying a <code>package_sources</code> object that can include packages from:</p>
+
+<ul>
+<li><code>drat</code> repositories</li>
+<li>github (using the devtools <code>user/repo[/subdir][@ref]</code> syntax</li>
+<li>bitbucket</li>
+<li>local packages (useful for private reposoitories as there&#39;s no need to deal with access rights)</li>
+</ul>
+
+<p>This is done by creating a local, ad-hoc, drat repository that the target machine can use.</p>
+
+<p>There is some overlap here between <code>context</code> and tools like <a href="https://rstudio.github.io/packrat/"><code>packrat</code></a> and <a href="https://github.com/opower/rbundler"><code>rbundler</code></a> but the focus here is less on constructing exact versioned environments and more on a lightweight way of bootstrapping an environment and dealing with the possibility of packages from different architectures or R versions coexsting within a common filesystem tree with a minimal amount of reinstalling.</p>
+
+<h1>Generalising</h1>
+
+<p>Come up with a general way of specifying all the required bits so that we can reuse this in different contexts; <code>callr</code>, <code>rrqueue</code>, <code>experimentr</code>, <code>remake</code> all do variants of this but all store things in different ways.  Something that generalised all of them would be great.  This probably just requires store/retrieve methods for the classed objects that are returned.</p>
+
+<h2>Installation</h2>
+
+<pre><code class="r">devtools::install_github(&quot;dide-tools/context&quot;)
+</code></pre>
+
+
+    <h2>Help topics</h2>
+
+    <h3></h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="build_local_drat.html">build_local_drat</a></code><br />Build local drat repository</li>
+            
+      <li>
+        <code><a href="context_log.html">context_log_start</a></code>(context_log_stop, parse_context_log)<br />Start and stop log</li>
+            
+      <li>
+        <code><a href="context.html">context_save</a></code>(context_load, context_read)<br />Save and reload contexts</li>
+            
+      <li>
+        <code><a href="install_context.html">install_context</a></code><br />Install script</li>
+            
+      <li>
+        <code><a href="install_packages.html">install_packages</a></code><br />Install packages</li>
+            
+      <li>
+        <code><a href="package_sources.html">package_sources</a></code><br />Information about non-CRAN packages</li>
+            
+      <li>
+        <code><a href="task_handle.html">task_handle</a></code><br />Create task handle</li>
+            
+      <li>
+        <code><a href="task_result.html">task_result</a></code><br />Fetch task result</li>
+            
+      <li>
+        <code><a href="task_run.html">task_run</a></code><br />Run a task</li>
+            
+      <li>
+        <code><a href="task.html">task_save</a></code>(task_load, task_read, task_save_list, tasks_list)<br />Save and reload tasks</li>
+            
+      <li>
+        <code><a href="task_status_read.html">task_status_read</a></code><br />Task status</li>
+    
+    </ul>
+  </div>
+  
+  <div class="span3 offset1">
+    <h2>Vignettes</h2>
+    <ul>
+      <li><a href="vignettes/context.html">context</a></li>
+    </ul>
+        
+    <h2>Dependencies</h2>
+    <ul>
+      
+      <li><strong>Imports</strong>: curl, drat</li>
+      <li><strong>Suggests</strong>: codetools, knitr, rmarkdown, testthat</li>
+      
+    </ul>
+    <h2>Authors</h2>
+    <ul>
+    </ul>
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

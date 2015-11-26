@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>task_save. context 0.0.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">context 0.0.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Save and reload tasks</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>task_save(expr, context, envir&nbsp;=&nbsp;parent.frame())</div>
+<div>task_save_list(list, context, envir&nbsp;=&nbsp;parent.frame())</div>
+<div>task_load(handle, install&nbsp;=&nbsp;TRUE, envir&nbsp;=&nbsp;.GlobalEnv)</div>
+<div>task_read(handle)</div>
+<div>tasks_list(root)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>expr</dt>
+      <dd>An expression to save</dd>
+      <dt>context</dt>
+      <dd>Either a <code>context</code> or a <code>context_handle</code>
+object.  If missing (or NULL) one will be automatically
+generated, using <code>envir</code> and <code>root</code>.  See
+<code><a href='context.html'>context_save</a></code>.</dd>
+      <dt>envir</dt>
+      <dd>Passed through to <code>context_save</code> when locating
+local variables.</dd>
+      <dt>list</dt>
+      <dd>a <code>list</code> of tasks, all to be evaluted in the same context.</dd>
+      <dt>handle</dt>
+      <dd>A handle to load the task</dd>
+      <dt>install</dt>
+      <dd>Should missing packages be installed?</dd>
+      <dt>root</dt>
+      <dd>root</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Save and reload tasks.  Tasks consist of an expression bound to a
+<code>context</code>.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>task_load</li><li>task_read</li><li>task_save</li><li>task_save_list</li><li>tasks_list</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

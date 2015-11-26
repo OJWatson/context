@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>install_packages. context 0.0.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">context 0.0.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Install packages</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>install_packages(packages, sources&nbsp;=&nbsp;package_sources(), ..., error&nbsp;=&nbsp;TRUE, lock_wait&nbsp;=&nbsp;TRUE)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>packages</dt>
+      <dd>A character vector of packages to install</dd>
+      <dt>sources</dt>
+      <dd>Source information from
+<code><a href='package_sources.html'>package_sources</a></code>.</dd>
+      <dt>...</dt>
+      <dd>Additional arguments passed through to
+<code><a href='http://www.inside-r.org/r-doc/utils/install.packages'>install.packages</a></code>.</dd>
+      <dt>error</dt>
+      <dd>Throw an error if package installation fails.</dd>
+      <dt>lock_wait</dt>
+      <dd>Lock the directory while installing, or wait for
+a second installation to complete.  In contrast with
+<code><a href='http://www.inside-r.org/r-doc/utils/install.packages'>install.packages</a></code>, the lock is always library-wide.
+Catastrophoic failure (e.g., out of memory error during package
+installation) could leave a lockfile present.  In that case,
+delete the file <code>.lock_context</code> from the first entry in
+<code>.libPaths()</code>.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Install packages, using source information from
+<code><a href='package_sources.html'>package_sources</a></code>.  In contrast with
+<code>install.packages</code> this function can install packages in a
+new local repository (used to isolate packages from the rest of
+the system) and can install packages originally found on github
+and bitbucket by creating a transient drat repository.  In
+addition, <code>install_packages_missing</code> only installs
+<em>missing</em> packages only.  Also in contrast with
+<code>install.packages</code>, these function will throw an error if
+package installation fails (unless error=FALSE is set).</p>
+  
+    </div>
+
+    <div class="Warning">
+      <h2>Warning</h2>
+
+      <p></p>
+  
+      <p>Because of the possibility of confusion with
+  <code><a href='http://www.inside-r.org/r-doc/utils/install.packages'>install.packages</a></code>, this function may be renamed
+  shortly.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>install_packages</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
